@@ -4,7 +4,6 @@ body[data-theme="light"] {
   --color-text-secondary: #076963;
   --color-bg-primary: #fff;
   --color-bg-toggle: #1e90ff;
-  --miko-gradient: linear-gradient(270deg, #70efd1 0, #1bc1c1 100%);
 }
 
 body[data-theme="dark"] {
@@ -12,7 +11,6 @@ body[data-theme="dark"] {
   --color-text-secondary: #ff6b00;
   --color-bg-primary: #15232d;
   --color-bg-toggle: #a9a9a9;
-  --miko-gradient: linear-gradient(270deg, #70efd1 0, #1bc1c1 100%);
 }
 
 html,
@@ -24,7 +22,8 @@ body {
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: sans-serif;
-  transition: background 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  --miko-gradient: linear-gradient(270deg, #70efd1 0, #1bc1c1 100%);
 }
 
 a {
