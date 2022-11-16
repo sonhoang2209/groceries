@@ -13,7 +13,7 @@ export const Button = ({text, onClick, icon}: ButtonProps) => {
             {
                 icon && (
                     <div className={styles.icon}>
-                        <img alt={''} src={icon.src} width={24} height={24} />
+                        {/*<img alt={''} src={icon.src} width={24} height={24} />*/}
                     </div>
                 )
             }
