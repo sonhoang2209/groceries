@@ -25,8 +25,8 @@ export const ListCard = ({cardData, banner}: ListCardProps) => {
         )
       }
       {
-        cardData.map(item => (
-          <div className={styles.item} key={item.slug}>
+        cardData.map((item, index) => (
+          <div className={styles.item} key={index.toString()}>
             <Card data={item}/>
           </div>
         ))
