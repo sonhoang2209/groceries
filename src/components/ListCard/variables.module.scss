@@ -1,0 +1,21 @@
+.listCard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+
+  .item {
+    width: calc((100% - 90px) / 4);
+  }
+
+  .bigItem {
+    width: calc((100% - 30px) / 2);
+    .thumbnail {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      display: block;
+      position: relative;
+      box-shadow: 0 0 13px 0 #00000040;
+    }
+  }
+}
