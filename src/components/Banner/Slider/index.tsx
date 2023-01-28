@@ -4,7 +4,6 @@ import React from "react";
 import styles from './variables.module.scss'
 import Slider from "react-slick";
 import Link from "next/link";
-import Image from "next/image";
 
 export interface SliderItem {
   image: string

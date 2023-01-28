@@ -1,0 +1,20 @@
+.products {
+  padding-top: 62px;
+  .title {
+    text-align: center;
+  }
+  .productListWrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    .item {
+      width: calc((100% - 90px) / 4);
+    }
+  }
+}
+
+.container {
+  width: 1180px;
+  margin: 0.75rem auto;
+}
