@@ -8,7 +8,7 @@ export interface CardProps {
   image: string;
   name: string;
   price: number;
-  id: number;
+  id: number | string;
   slug: string;
   localize?: string;
   product_name?: string;

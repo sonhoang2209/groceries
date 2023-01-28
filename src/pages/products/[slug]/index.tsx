@@ -67,7 +67,11 @@ const Product = () => {
             <p>{productDetail.description}</p>
           </div>
           <div className={styles.box}>
-            <h1 className={styles.title}>{productDetail.product_name}</h1>
+            <h1 className={styles.title}>
+              {productDetail.product_name ||
+                productDetail.localize ||
+                productDetail.name}
+            </h1>
             <div className={styles.boxPrice}>
               <span>
                 {productDetail.price?.toLocaleString("vi", {
