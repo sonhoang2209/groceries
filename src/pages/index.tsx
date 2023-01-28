@@ -10,9 +10,6 @@ import { Helmet } from "react-helmet";
 export default function Home() {
   return (
     <div className={styles.home}>
-      <Helmet>
-        <title>Drinks Order</title>
-      </Helmet>
       <Banner />
       <div className={styles.container}>
         <ListCard cardData={defaultData} banner={banner} />

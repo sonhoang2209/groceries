@@ -12,9 +12,70 @@
       width: calc((100% - 90px) / 4);
     }
   }
+
+  .thumbnail {
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    .image {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .title {
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .boxPrice {
+    display: flex;
+    justify-content: space-between;
+    .boxNumber {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      span {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .iconButton {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    cursor: pointer;
+    background-color: #fa8c16;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+    &:disabled {
+      background-color: #e4e4e4;
+    }
+  }
 }
 
 .container {
   width: 1180px;
   margin: 0.75rem auto;
+}
+
+.flexBox {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+  max-width: 90%;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 0 13px 0 #00000010;
+  .box {
+    width: calc(50% - 20px);
+  }
 }

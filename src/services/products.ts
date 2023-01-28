@@ -1,27 +1,22 @@
-import axiosBase from "./axios";
+import axios from "./axios";
 
 const getProducts = () => {
   try {
-    return axiosBase.get("/products");
+    return axios.get("/products");
   } catch (e) {
     throw e;
   }
 };
 
-const getSituationStatus = () => {
+const getProductById = (id: number) => {
   try {
-    return axiosBase.get("/api/v1/dashboards/status_of_work_today");
+    const param = {
+      id,
+    };
+    return axios.post("/products/id", param);
   } catch (e) {
     throw e;
   }
 };
 
-const getSituationImage = () => {
-  try {
-    return axiosBase.get("/api/v1/dashboards/image");
-  } catch (e) {
-    throw e;
-  }
-};
-
-export { getProducts, getSituationImage, getSituationStatus };
+export { getProducts, getProductById };
