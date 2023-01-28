@@ -2,7 +2,7 @@ import axiosBase from "./axios";
 
 const getProducts = () => {
   try {
-    return axiosBase.get("/api/v1/dashboards/current_status");
+    return axiosBase.get("/products");
   } catch (e) {
     throw e;
   }

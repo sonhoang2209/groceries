@@ -9,6 +9,7 @@ export interface CardProps {
   id: string;
   slug: string;
   localize?: string;
+  product_name?: string;
 }
 
 export const Card = ({ data }: { data: CardProps }) => {
@@ -21,7 +22,7 @@ export const Card = ({ data }: { data: CardProps }) => {
       </div>
       <div className={styles.content}>
         <Link href={`/products/${data.slug}`}>
-          <h3 className={styles.name}>{data.localize || data.name}</h3>
+          <h3 className={styles.name}>{data.product_name || data.name}</h3>
         </Link>
         <span className={styles.price}>
           {data.price.toLocaleString("vi", {

@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./products.module.scss";
 import { Card } from "../../components/Card";
+import { getProducts } from "../../services/products";
 
 const Products = () => {
   const [productList, setProductList] = useState<any>([]);
-  useEffect(() => {
-    fetch("http://localhost:4000/products", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setProductList(data.products);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+
+  const fetchSituation = useCallback(async () => {
+    try {
+      await Promise.all([getProducts()]).then(([response]) => {
+        setProductList(response.data.products);
       });
+    } catch (e) {}
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    fetchSituation().then();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className={styles.products}>
       <div className={styles.container}>
