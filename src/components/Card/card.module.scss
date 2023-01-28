@@ -1,4 +1,4 @@
-.card{
+.card {
   .thumbnail {
     position: relative;
     border-radius: 10px;
@@ -7,6 +7,7 @@
     width: 100%;
     padding-top: 100%;
     box-shadow: 0 0 13px 0 #00000040;
+    cursor: pointer;
     .image {
       position: absolute;
       top: 0;
@@ -28,11 +29,11 @@
     .name {
       text-decoration: none;
       color: #191919;
-      -o-transition: .5s;
-      -ms-transition: .5s;
-      -moz-transition: .5s;
-      -webkit-transition: .5s;
-      transition: .5s;
+      -o-transition: 0.5s;
+      -ms-transition: 0.5s;
+      -moz-transition: 0.5s;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
       margin-top: 0;
       margin-bottom: 4px;
       -webkit-line-clamp: 2;
@@ -40,8 +41,9 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
+      cursor: pointer;
       &:hover {
-        color: #EA8025;
+        color: #ea8025;
       }
     }
     .price {
