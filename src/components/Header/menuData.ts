@@ -13,28 +13,23 @@ export interface SubMenuType {
 
 export const menuData: SubMenuType[] = [
   {
-    label: "San Pham",
-    slug: "products",
+    label: "Menu",
+    slug: "Menu",
     link: "/products",
   },
   {
-    label: "Menu",
-    slug: "Menu",
-    link: "/collections",
-  },
-  {
-    label: "Cua hang",
+    label: "Shops",
     slug: "shops",
-    link: "/collections",
+    link: "/shops",
   },
   {
     label: "Blogs",
     slug: "blogs",
-    link: "/collections",
+    link: "/blogs",
   },
   {
-    label: "Gioi thieu",
+    label: "Information",
     slug: "information",
-    link: "/collections",
+    link: "/information",
   },
 ];

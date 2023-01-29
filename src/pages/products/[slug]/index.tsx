@@ -129,7 +129,7 @@ const Product = () => {
               <div className={styles.boxOptionContent}>
                 <div className={styles.radioOption}>
                   <label className={styles.radioCustom}>
-                    None + 0
+                    Không
                     <input
                       type="radio"
                       name="topping"

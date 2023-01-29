@@ -6,7 +6,7 @@ import { BlogProps } from "../components/ListBlog";
 export const defaultData: CardProps[] = [
   {
     image:
-      "https://product.hstatic.net/1000075078/product/1665655231_cloudfee-roasted-almond_fd7f9778e1814e81bc049f991ffacf60.jpg",
+      "https://product.hstatic.net/1000075078/product/1665655345_tch-sua-da_d490c8fe35bd4380a9cb68e4fb5bfbf3_large.jpg",
     name: "CloudFee Hạnh Nhân Nướng",
     price: 49000,
     id: "chnn",
