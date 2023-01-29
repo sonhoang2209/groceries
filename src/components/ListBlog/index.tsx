@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export interface BlogProps {
   image: string;
-  images?: string;
+  images: string;
   title: string;
   link: string;
   content: string;
@@ -15,19 +15,19 @@ export const CardBlog = ({ data }: { data: BlogProps }) => {
   return (
     <div className={styles.card}>
       <div className={styles.thumbnail}>
-        <div>
+        <Link href={data.link || ""}>
           <img
             className={styles.image}
             src={data.image || data.images}
             alt={""}
           />
-        </div>
+        </Link>
       </div>
       <div className={styles.content}>
-        <p className={styles.date}>{data?.dateUpdate}</p>
-        <div>
+        <p className={styles.date}>{data.dateUpdate}</p>
+        <Link href={data.link || ""}>
           <h3 className={styles.title}>{data.title || data.header}</h3>
-        </div>
+        </Link>
         <span className={styles.text}>{data.content}</span>
       </div>
     </div>
