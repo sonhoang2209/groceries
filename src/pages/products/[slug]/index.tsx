@@ -1,24 +1,27 @@
 import { useCallback, useEffect, useState } from "react";
 import { getProductById } from "../../../services/products";
 import styles from "../products.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../stores";
 import Link from "next/link";
+import { addToCart } from "../../../stores/cartSlice";
 
 const Product = () => {
+  const dispacth = useDispatch();
   const [productDetail, setProduct] = useState<any>(
     useSelector((state: RootState) => state.products.product)
   );
   const [quantity, setQuantity] = useState<number>(1);
   const [total, setTotal] = useState<number>(0);
-  const [size, setSize] = useState<boolean>(false);
-  const [option, setOption] = useState<boolean>(false);
+  const [size, setSize] = useState<string>("");
+  const [option, setOption] = useState<string>("");
+  const [newPrice, setNewprice] = useState<number>(productDetail?.price | 0);
 
   const onChangeQuantity = (type: "plus" | "minus") => {
     setQuantity(type === "plus" ? quantity + 1 : quantity - 1);
   };
 
-  const onChecked = (type: "size" | "option", value: boolean) => {
+  const onChecked = (type: "size" | "option", value: string) => {
     if (type === "size") {
       setSize(value);
     } else {
@@ -45,8 +48,21 @@ const Product = () => {
     if (size) newTotal = newTotal + 6000;
     if (option) newTotal = newTotal + 10000;
 
+    setNewprice(newTotal);
     setTotal(newTotal * quantity);
   }, [productDetail, quantity, size, option]);
+
+  const handleAddToCart = () => {
+    dispacth(
+      addToCart({
+        ...productDetail,
+        size: size,
+        topping: option,
+        quantity: quantity,
+        newPrice: newPrice,
+      })
+    );
+  };
 
   if (!productDetail) return null;
 
@@ -106,7 +122,7 @@ const Product = () => {
                       type="radio"
                       name="size"
                       defaultChecked
-                      onChange={() => onChecked("size", false)}
+                      onChange={() => onChecked("size", "")}
                     />
                     <span className={styles.checkmark}></span>
                   </label>
@@ -117,7 +133,7 @@ const Product = () => {
                     <input
                       type="radio"
                       name="size"
-                      onChange={() => onChecked("size", true)}
+                      onChange={() => onChecked("size", "vừa")}
                     />
                     <span className={styles.checkmark}></span>
                   </label>
@@ -134,7 +150,7 @@ const Product = () => {
                       type="radio"
                       name="topping"
                       defaultChecked
-                      onChange={() => onChecked("option", false)}
+                      onChange={() => onChecked("option", "")}
                     />
                     <span className={styles.checkmark}></span>
                   </label>
@@ -145,7 +161,9 @@ const Product = () => {
                     <input
                       type="radio"
                       name="topping"
-                      onChange={() => onChecked("option", true)}
+                      onChange={() =>
+                        onChecked("option", "Kem Phô Mai Macchiato")
+                      }
                     />
                     <span className={styles.checkmark}></span>
                   </label>
@@ -156,7 +174,7 @@ const Product = () => {
                     <input
                       type="radio"
                       name="topping"
-                      onChange={() => onChecked("option", true)}
+                      onChange={() => onChecked("option", "Trân châu trắng")}
                     />
                     <span className={styles.checkmark}></span>
                   </label>
@@ -167,7 +185,7 @@ const Product = () => {
                     <input
                       type="radio"
                       name="topping"
-                      onChange={() => onChecked("option", true)}
+                      onChange={() => onChecked("option", "Caramel")}
                     />
                     <span className={styles.checkmark}></span>
                   </label>
@@ -178,14 +196,14 @@ const Product = () => {
                     <input
                       type="radio"
                       name="topping"
-                      onChange={() => onChecked("option", true)}
+                      onChange={() => onChecked("option", "Thạch Cà Phê")}
                     />
                     <span className={styles.checkmark}></span>
                   </label>
                 </div>
               </div>
             </div>
-            <button className={styles.orderButton}>
+            <button className={styles.orderButton} onClick={handleAddToCart}>
               <span>
                 {total.toLocaleString("vi", {
                   style: "currency",

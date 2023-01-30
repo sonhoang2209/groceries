@@ -7,7 +7,7 @@ export const defaultData: CardProps[] = [
   {
     image:
       "https://product.hstatic.net/1000075078/product/1665655345_tch-sua-da_d490c8fe35bd4380a9cb68e4fb5bfbf3_large.jpg",
-    name: "CloudFee Hạnh Nhân Nướng",
+    product_name: "CloudFee Hạnh Nhân Nướng",
     price: 49000,
     id: "chnn",
     slug: "cloudfee-hanh-nhan-nuong",
@@ -15,7 +15,7 @@ export const defaultData: CardProps[] = [
   {
     image:
       "https://product.hstatic.net/1000075078/product/1665655345_tch-sua-da_d490c8fe35bd4380a9cb68e4fb5bfbf3_large.jpg",
-    name: "The Coffee House Sữa Đá",
+    product_name: "The Coffee House Sữa Đá",
     price: 39000,
     id: "chnn",
     slug: "cloudfee-hanh-nhan-nuong",
@@ -23,7 +23,7 @@ export const defaultData: CardProps[] = [
   {
     image:
       "https://product.hstatic.net/1000075078/product/1653291204_hi-tea-vai_14bd90ca341f48fdab4d8d68bddc985c_large.jpg",
-    name: "Hi-Tea Vải",
+    product_name: "Hi-Tea Vải",
     price: 49000,
     id: "chnn",
     slug: "cloudfee-hanh-nhan-nuong",
@@ -31,7 +31,7 @@ export const defaultData: CardProps[] = [
   {
     image:
       "https://product.hstatic.net/1000075078/product/1638440015_banh-mi-vietnam_0953b015871e47e383ec458a109ae8eb_large.jpg",
-    name: "Bánh Mì VN Thịt Nguội",
+    product_name: "Bánh Mì VN Thịt Nguội",
     price: 35000,
     id: "chnn",
     slug: "cloudfee-hanh-nhan-nuong",
@@ -41,7 +41,7 @@ export const defaultData: CardProps[] = [
 export const banner: BannerCardProps = {
   image:
     "https://file.hstatic.net/1000075078/file/banner_app_59792ee4e6074b33aca7f140433e9292.jpg",
-  name: "Bánh Mì VN Thịt Nguội",
+  product_name: "Bánh Mì VN Thịt Nguội",
   price: 0,
   id: "chnn",
   slug: "cloudfee-hanh-nhan-nuong",
@@ -60,7 +60,7 @@ export const homeBlockData: HomeBlogProps = {
 
 export const blogListData: BlogProps[] = [
   {
-    image:
+    images:
       "//file.hstatic.net/1000075078/article/dscf0216_2890bcca44ae49aaaf843d5fa3db2fc6_grande.jpg",
     title:
       '“KHUẤY ĐỂ THẤY TRĂNG" - KHUẤY LÊN NIỀM HẠNH PHÚC: TRẢI NGHIỆM KHÔNG THỂ BỎ LỠ MÙA TRUNG THU NÀY',
@@ -70,7 +70,7 @@ export const blogListData: BlogProps[] = [
     dateUpdate: "16/08/2022",
   },
   {
-    image:
+    images:
       "//file.hstatic.net/1000075078/article/hinh_cover_hero_c7bbff15ef674270ae8390da9c2be2ab_grande.jpg",
     title:
       '“KHUẤY ĐỂ THẤY TRĂNG" - KHUẤY LÊN NIỀM HẠNH PHÚC: TRẢI NGHIỆM KHÔNG THỂ BỎ LỠ MÙA TRUNG THU NÀY',
@@ -80,7 +80,7 @@ export const blogListData: BlogProps[] = [
     dateUpdate: "16/08/2022",
   },
   {
-    image:
+    images:
       "//file.hstatic.net/1000075078/article/pr-cover_41de066c6f654ee9b318dbffe7e5e5f0_grande.jpg",
     title: "10 LỢI ÍCH KHÔNG NGỜ CỦA TRÀ HOA HIBISCUS",
     link: "blogs/teaholic/khuay-de-thay-trang-trung-thu-nay",

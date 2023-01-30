@@ -3,8 +3,8 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 
 export interface BlogProps {
-  image: string;
-  images: string;
+  image?: string;
+  images?: string;
   title: string;
   link: string;
   content: string;

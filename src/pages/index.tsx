@@ -5,7 +5,6 @@ import { HomeBlog } from "../components/HomeBlog";
 import { banner, blogListData, defaultData, homeBlockData } from "./homeData";
 import React from "react";
 import { ListBlog } from "../components/ListBlog";
-import { Helmet } from "react-helmet";
 
 export default function Home() {
   return (

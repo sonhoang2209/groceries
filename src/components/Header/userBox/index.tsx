@@ -1,9 +1,13 @@
 import { useState } from "react";
 import styles from "../variables.module.scss";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../stores";
 
 const UserBox = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const productList = useSelector((state: RootState) => state.cart.products);
+
   return (
     <div className={styles.userBox}>
       <div className={styles.userButton} onClick={() => setOpen(!open)}>
@@ -26,13 +30,18 @@ const UserBox = () => {
           </div>
         ) : null}
       </div>
-      <div className={styles.userButton}>
-        <img
-          src="images/icons/cart.png"
-          alt=""
-          className={styles.userButtonIcon}
-        />
-      </div>
+      <Link href={"/cart"} className={styles.link}>
+        <div className={styles.userButton}>
+          <img
+            src="images/icons/cart.png"
+            alt=""
+            className={styles.userButtonIcon}
+          />
+          {productList.length > 0 ? (
+            <div className={styles.number}>{productList.length}</div>
+          ) : null}
+        </div>
+      </Link>
     </div>
   );
 };

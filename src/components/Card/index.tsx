@@ -6,7 +6,7 @@ import { setProductDetail } from "../../stores/productsSlice";
 
 export interface CardProps {
   image: string;
-  name: string;
+  name?: string;
   price: number;
   id: number | string;
   slug: string;
