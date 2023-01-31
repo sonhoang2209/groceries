@@ -18,23 +18,23 @@ export const defaultData: CardProps[] = [
     product_name: "The Coffee House Sữa Đá",
     price: 39000,
     id: "chnn",
-    slug: "cloudfee-hanh-nhan-nuong",
+    slug: "the-coffee-house-sua-da",
   },
   {
     image:
       "https://product.hstatic.net/1000075078/product/1653291204_hi-tea-vai_14bd90ca341f48fdab4d8d68bddc985c_large.jpg",
     product_name: "Hi-Tea Vải",
     price: 49000,
-    id: "chnn",
-    slug: "cloudfee-hanh-nhan-nuong",
+    id: 8,
+    slug: "hi-tea-vai",
   },
   {
     image:
-      "https://product.hstatic.net/1000075078/product/1638440015_banh-mi-vietnam_0953b015871e47e383ec458a109ae8eb_large.jpg",
-    product_name: "Bánh Mì VN Thịt Nguội",
+      "https://product.hstatic.net/1000075078/product/1639377816_ca-phe-den-nong_6aa36aa96e584a52b7e0ea3fa252fb92_large.jpg",
+    product_name: "Cà Phê Đen Nóng",
     price: 35000,
-    id: "chnn",
-    slug: "cloudfee-hanh-nhan-nuong",
+    id: 9,
+    slug: "ca-phe-den-nong",
   },
 ];
 

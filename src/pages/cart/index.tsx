@@ -1,24 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../variables.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../stores";
 import { removeToCart } from "../../stores/cartSlice";
 
 const Cart = () => {
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
   const [productList, setProductList] = useState<any>(
     useSelector((state: RootState) => state.cart.products) || []
   );
+  const [allTotal, setAllTotal] = useState<any>(0);
 
   const handleRemoveToCart = (item: any) => {
-    dispacth(removeToCart(item));
+    dispatch(removeToCart(item));
   };
+
+  useEffect(() => {
+    let total: any = 0;
+    productList.forEach((item: any) => {
+      total = total + item.newPrice * item.quantity;
+    });
+    setAllTotal(total);
+  }, [productList]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <h1 className={styles.title}>Cart</h1>
-        <div className={styles.listShop}>
+        <div className={styles.listCart}>
           <div className={styles.boxCart}>
             {productList.map((item: any, index: number) => (
               <div key={index} className={styles.cartWrap}>
@@ -59,6 +68,32 @@ const Cart = () => {
                 </div>
               </div>
             ))}
+          </div>
+          <div className={styles.boxInfo}>
+            <div className={styles.infoRow}>
+              <div style={{ width: "35%" }}></div>
+              <div className={styles.infoRow} style={{ width: "60%" }}>
+                <span style={{ minWidth: 125 }}>Shops Voucher</span>
+                <span style={{ color: "#05a", fontSize: 13 }}>
+                  Chọn Hoặc Nhập Mã
+                </span>
+              </div>
+            </div>
+            <div className={styles.infoRow}>
+              <div style={{ width: "35%" }}>
+                số sản phẩm : {productList.length}
+              </div>
+              <div className={styles.infoRow} style={{ width: "60%" }}>
+                <span style={{ minWidth: 125 }}>Tổng thanh toán: </span>
+                <span style={{ color: "red", fontSize: 20 }}>
+                  {allTotal.toLocaleString("vi", {
+                    style: "currency",
+                    currency: "VND",
+                  })}
+                </span>
+                <button>Thanh Toán</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
