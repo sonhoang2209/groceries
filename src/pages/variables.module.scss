@@ -24,6 +24,31 @@
       margin-top: 0;
       text-align: center;
       margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .boxSearch {
+      text-align: center;
+      margin-bottom: 24px;
+      input {
+        border-width: 2px;
+        width: 300px;
+      }
+    }
+    input {
+      box-sizing: border-box;
+      min-width: 250px;
+      height: 2.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      border-radius: 4px;
+      padding: 0.75rem;
+      outline: none;
+      flex: 1;
+      flex-shrink: 0;
+      filter: none;
+      font-size: 16px;
     }
     .loginWrap {
       width: fit-content;
@@ -34,20 +59,7 @@
       gap: 16px;
       box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
       border-radius: 8px;
-      input {
-        box-sizing: border-box;
-        min-width: 250px;
-        height: 2.5rem;
-        overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.14);
-        border-radius: 4px;
-        padding: 0.75rem;
-        outline: none;
-        flex: 1;
-        flex-shrink: 0;
-        filter: none;
-        font-size: 16px;
-      }
+
       .line {
         border-bottom: 1px solid #cdcdcd40;
       }
@@ -62,6 +74,9 @@
         border-radius: 24px;
         font-size: 16px;
         cursor: pointer;
+        &:disabled {
+          opacity: 0.6;
+        }
       }
     }
     .listShop {
@@ -168,6 +183,9 @@
           border-radius: 24px;
           font-size: 16px;
           cursor: pointer;
+          &:disabled {
+            opacity: 0.6;
+          }
         }
       }
     }

@@ -10,7 +10,7 @@ const initialState: CartState = {
 };
 
 export const productState = createSlice({
-  name: "counter",
+  name: "cart",
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<any>) => {
@@ -20,8 +20,6 @@ export const productState = createSlice({
           e?.topping === action.payload?.topping &&
           e?.size === action.payload?.size
       );
-      console.log(state.products);
-
       if (isIndExisted !== -1) {
         let newState = state.products;
         newState[isIndExisted].quantity =
@@ -32,15 +30,15 @@ export const productState = createSlice({
       }
     },
     removeToCart: (state, action: PayloadAction<any>) => {
-      const isIndExisted = state.products?.findIndex(
-        (e: { id: any; topping: any; newPrice: any }) =>
-          e?.id === action.payload?.id &&
-          e?.topping === action.payload?.topping &&
-          e?.newPrice == action.payload?.newPrice
-      );
-      console.log(isIndExisted, action.payload);
-
-      // state.products = [...state.products];
+      const remove = action.payload;
+      state.products = [
+        ...state.products.filter(
+          (e: any) =>
+            e?.id != remove?.id ||
+            e?.topping !== remove?.topping ||
+            e.size !== remove.size
+        ),
+      ];
     },
   },
 });

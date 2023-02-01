@@ -23,7 +23,13 @@ const Shops = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Shops</h1>
+        <h1 className={styles.title}>
+          Shops
+          <div className={styles.boxSearch}>
+            <input placeholder="Tên đường, tên cửa hàng" />
+          </div>
+        </h1>
+
         <div className={styles.listShop}>
           {productList.map((item: any, index: number) => (
             <div key={index} className={styles.shopWrap}>

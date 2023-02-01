@@ -10,7 +10,7 @@ const initialState: UserState = {
 };
 
 export const userState = createSlice({
-  name: "counter",
+  name: "users",
   initialState,
   reducers: {
     setReduxUser: (state, action: PayloadAction<any>) => {

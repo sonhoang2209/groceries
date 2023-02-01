@@ -13,7 +13,7 @@ const initialState: ProductState = {
 };
 
 export const productState = createSlice({
-  name: "counter",
+  name: "products",
   initialState,
   reducers: {
     setReduxProducts: (state, action: PayloadAction<any>) => {

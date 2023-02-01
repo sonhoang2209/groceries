@@ -2,9 +2,13 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "../products/products.module.scss";
 import { ListBlog } from "../../components/ListBlog";
 import { getNews } from "../../services/news";
+import { useSelector } from "react-redux";
+import { RootState } from "../../stores";
 
 const Products = () => {
-  const [productList, setProductList] = useState<any>([]);
+  const [productList, setProductList] = useState<any>(
+    useSelector((state: RootState) => state.news.news) || []
+  );
 
   const fetchSituation = useCallback(async () => {
     try {
@@ -16,7 +20,7 @@ const Products = () => {
   }, []);
 
   useEffect(() => {
-    fetchSituation().then();
+    if (!productList.length) fetchSituation().then();
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

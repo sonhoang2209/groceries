@@ -30,7 +30,12 @@ const Products = () => {
   return (
     <div className={styles.products}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Products</h1>
+        <h1 className={styles.title}>
+          Products{" "}
+          <div className={styles.boxSearch}>
+            <input placeholder="Tên sản phẩm" />
+          </div>
+        </h1>
         <div className={styles.productListWrap}>
           {productList.map((product: any, index: number) => {
             return (

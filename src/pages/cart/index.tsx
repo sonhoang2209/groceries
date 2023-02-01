@@ -6,13 +6,15 @@ import { removeToCart } from "../../stores/cartSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const [productList, setProductList] = useState<any>(
-    useSelector((state: RootState) => state.cart.products) || []
-  );
+  const productList = useSelector((state: RootState) => state.cart.products);
   const [allTotal, setAllTotal] = useState<any>(0);
 
   const handleRemoveToCart = (item: any) => {
     dispatch(removeToCart(item));
+  };
+
+  const handleOrder = () => {
+    console.log("a");
   };
 
   useEffect(() => {
@@ -26,48 +28,59 @@ const Cart = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Cart</h1>
+        <h1 className={styles.title} style={{ justifyContent: "center" }}>
+          Cart
+        </h1>
         <div className={styles.listCart}>
           <div className={styles.boxCart}>
-            {productList.map((item: any, index: number) => (
-              <div key={index} className={styles.cartWrap}>
-                <div className={styles.thumb}>
-                  <img alt="" src={item.image} />
-                </div>
-                <div className={styles.shopInfo}>
-                  <div className={styles.info}>
-                    <h3>
-                      {item.product_name} {item.size}{" "}
-                      {item?.topping ? `thêm ${item.topping}` : ""}
-                    </h3>
-                    <p>
-                      {item.newPrice.toLocaleString("vi", {
-                        style: "currency",
-                        currency: "VND",
-                      })}
-                    </p>
+            {!productList?.length ? (
+              <div style={{ textAlign: "center" }}>
+                Không có sản phẩm nào, vui lòng chọn món.
+              </div>
+            ) : (
+              productList.map((item: any, index: number) => (
+                <div key={index} className={styles.cartWrap}>
+                  <div className={styles.thumb}>
+                    <img alt="" src={item.image} />
                   </div>
-                  <div>
-                    <h3>Quantity: {item.quantity}</h3>
-                    <p>
-                      Total:{" "}
-                      <span style={{ color: "red" }}>
-                        {(item.newPrice * item.quantity).toLocaleString("vi", {
+                  <div className={styles.shopInfo}>
+                    <div className={styles.info}>
+                      <h3>
+                        {item.product_name} {item.size}{" "}
+                        {item?.topping ? `thêm ${item.topping}` : ""}
+                      </h3>
+                      <p>
+                        {item.newPrice.toLocaleString("vi", {
                           style: "currency",
                           currency: "VND",
                         })}
-                      </span>
-                    </p>
+                      </p>
+                    </div>
+                    <div>
+                      <h3>Quantity: {item.quantity}</h3>
+                      <p>
+                        Total:{" "}
+                        <span style={{ color: "red" }}>
+                          {(item.newPrice * item.quantity).toLocaleString(
+                            "vi",
+                            {
+                              style: "currency",
+                              currency: "VND",
+                            }
+                          )}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className={styles.closeButton}
+                    onClick={() => handleRemoveToCart(item)}
+                  >
+                    <img src="images/icons/trash.png" alt="" />
                   </div>
                 </div>
-                <div
-                  className={styles.closeButton}
-                  onClick={() => handleRemoveToCart(item)}
-                >
-                  <img src="images/icons/trash.png" alt="" />
-                </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
           <div className={styles.boxInfo}>
             <div className={styles.infoRow}>
@@ -91,7 +104,9 @@ const Cart = () => {
                     currency: "VND",
                   })}
                 </span>
-                <button>Thanh Toán</button>
+                <button disabled={!productList.length} onClick={handleOrder}>
+                  Thanh Toán
+                </button>
               </div>
             </div>
           </div>
