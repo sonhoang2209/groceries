@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import styles from "../variables.module.scss";
 import { login } from "../../services/user";
 import { useRouter } from "next/dist/client/router";
+import { setCookie } from "cookies-next";
 
 const Shops = () => {
   const router = useRouter();
@@ -13,8 +14,10 @@ const Shops = () => {
     setError("");
     try {
       const { data } = await login(username, password);
-      if (data.success) return router.push("/");
-      else setError("Tài khoản mật khẩu không chính xác");
+      if (data.success) {
+        setCookie("token", "token");
+        return router.push("/");
+      } else setError("Tài khoản mật khẩu không chính xác");
     } catch (e) {
       console.log(e);
     }

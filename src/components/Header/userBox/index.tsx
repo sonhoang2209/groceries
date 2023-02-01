@@ -3,10 +3,16 @@ import styles from "../variables.module.scss";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../stores";
+import { deleteCookie, getCookie } from "cookies-next";
 
 const UserBox = () => {
   const [open, setOpen] = useState<boolean>(false);
   const productList = useSelector((state: RootState) => state.cart.products);
+  const token = getCookie("token");
+
+  const handleLogout = () => {
+    deleteCookie("token");
+  };
 
   return (
     <div className={styles.userBox}>
@@ -21,9 +27,15 @@ const UserBox = () => {
             <div className={styles.closeButton} onClick={() => setOpen(false)}>
               <img src="images/icons/close.svg" alt="" />
             </div>
-            <Link href={"/login"} className={styles.link}>
-              Login
-            </Link>
+            {token ? (
+              <a className={styles.link} onClick={handleLogout}>
+                Log out
+              </a>
+            ) : (
+              <Link href={"/login"} className={styles.link}>
+                Login
+              </Link>
+            )}
             <Link href={"/login"} className={styles.link}>
               Tra cứu đơn hàng
             </Link>
