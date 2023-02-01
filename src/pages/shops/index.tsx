@@ -9,6 +9,7 @@ const Shops = () => {
     try {
       await Promise.all([getBrands()]).then(([response]) => {
         setProductList(response.data.brands);
+        setSearch(response.data.brands);
       });
     } catch (e) {}
     //eslint-disable-next-line react-hooks/exhaustive-deps
