@@ -8,19 +8,36 @@ import { setReduxProducts } from "../../stores/productsSlice";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const [productList, setProductList] = useState<any>(
+  const productList = useSelector(
+    (state: RootState) => state.products.products
+  );
+  const [listSearch, setListSearch] = useState<any>(
     useSelector((state: RootState) => state.products.products) || []
   );
 
   const fetchSituation = useCallback(async () => {
     try {
       await Promise.all([getProducts()]).then(([response]) => {
-        setProductList(response.data.products);
+        setListSearch(response.data.products);
         dispatch(setReduxProducts(response.data.products));
       });
     } catch (e) {}
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleSearch = (e: any) => {
+    console.log(e.target.value);
+
+    const show = !e.target.value
+      ? [...productList]
+      : [
+          ...productList.filter(
+            (item: any) =>
+              item.product_name.toLowerCase().indexOf(e.target.value) > -1
+          ),
+        ];
+    setListSearch(show);
+  };
 
   useEffect(() => {
     fetchSituation().then();
@@ -33,11 +50,11 @@ const Products = () => {
         <h1 className={styles.title}>
           Products{" "}
           <div className={styles.boxSearch}>
-            <input placeholder="Tên sản phẩm" />
+            <input placeholder="Tên sản phẩm" onChange={handleSearch} />
           </div>
         </h1>
         <div className={styles.productListWrap}>
-          {productList.map((product: any, index: number) => {
+          {listSearch.map((product: any, index: number) => {
             return (
               <div className={styles.item} key={index}>
                 <Card data={product} />

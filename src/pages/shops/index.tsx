@@ -4,6 +4,7 @@ import { getBrands } from "../../services/brands";
 
 const Shops = () => {
   const [productList, setProductList] = useState<any>([]);
+  const [search, setSearch] = useState<any>([]);
   const fetchSituation = useCallback(async () => {
     try {
       await Promise.all([getBrands()]).then(([response]) => {
@@ -12,6 +13,19 @@ const Shops = () => {
     } catch (e) {}
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleSearch = (e: any) => {
+    console.log(e.target.value);
+
+    const show = !e.target.value
+      ? [...productList]
+      : [
+          ...productList.filter(
+            (item: any) => item.name.toLowerCase().indexOf(e.target.value) > -1
+          ),
+        ];
+    setSearch(show);
+  };
 
   useEffect(() => {
     fetchSituation().then();
@@ -26,12 +40,15 @@ const Shops = () => {
         <h1 className={styles.title}>
           Shops
           <div className={styles.boxSearch}>
-            <input placeholder="Tên đường, tên cửa hàng" />
+            <input
+              placeholder="Tên đường, tên cửa hàng"
+              onChange={handleSearch}
+            />
           </div>
         </h1>
 
         <div className={styles.listShop}>
-          {productList.map((item: any, index: number) => (
+          {search.map((item: any, index: number) => (
             <div key={index} className={styles.shopWrap}>
               <div className={styles.thumb}>
                 <img alt="" src={item.photo} />
